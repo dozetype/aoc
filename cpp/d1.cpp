@@ -5,6 +5,7 @@
 #include <string>
 
 int main() {
+    auto start = std::chrono::high_resolution_clock::now();
     std::ifstream file("puzzles/d1.txt");
     assert(file.is_open());
 
@@ -30,11 +31,7 @@ int main() {
         }
         left.push_back(temp[0]);
         right.push_back(temp[1]);
-        if (!similarity.contains(temp[1])) {
-            similarity[temp[1]] = 1;
-        } else {
-            similarity[temp[1]]++;
-        }
+        similarity[temp[1]]++;
     }
     std::ranges::sort(left);
     std::ranges::sort(right);
@@ -45,5 +42,8 @@ int main() {
         ans2 += similarity[left[i]] * left[i];
     }
     std::cout << ans << "\n" << ans2 << std::endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "Elapsed time: " << elapsed.count() << " seconds\n";
     return 0;
 }
