@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.31)
+project(aoc)
+
+set(CMAKE_CXX_STANDARD 20)
+
+add_executable(d1_exec cpp/d1.cpp)
+add_executable(d2_exec cpp/d2.cpp)
