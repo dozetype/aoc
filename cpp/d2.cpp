@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <regex>
+#include <sstream>
 
 bool isGood(std::vector<int> path) {
     bool only_inc{true};
@@ -24,18 +25,17 @@ bool isGood(std::vector<int> path) {
 }
 
 int main() {
+    auto start = std::chrono::high_resolution_clock::now();
     std::ifstream file("puzzles/d2.txt");
     std::string line;
     std::regex delim("\\s");
     int safe_count{};
     while (getline(file, line)) {
-        std::sregex_token_iterator it(line.begin(), line.end(), delim, -1);
-        std::sregex_token_iterator end;
         std::vector<int> curr_path;
-        for (; it!=end; ++it) {
-            if (!it->str().empty()) {
-                curr_path.push_back(std::stoi(it->str()));
-            }
+        std::istringstream iss(line);
+        int num;
+        while (iss >> num) {
+            curr_path.push_back(num);
         }
 
         bool anyOk = isGood(curr_path); //check without removing
@@ -69,4 +69,7 @@ int main() {
         if (anyOk) safe_count++;
     }
     std::cout << safe_count <<std::endl;
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    std::cout << "Elapsed time: " << elapsed.count() << " seconds\n";
 }
