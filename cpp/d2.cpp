@@ -1,10 +1,6 @@
-#include <any>
-#include <fstream>
-#include <iostream>
-#include <regex>
-#include <sstream>
+#include "aoc.h"
 
-bool isGood(std::vector<int> path) {
+bool isGood(vector<int> path) {
     bool only_inc{true};
     bool only_dec{true};
     bool safe{true};
@@ -26,13 +22,12 @@ bool isGood(std::vector<int> path) {
 
 int main() {
     auto start = std::chrono::high_resolution_clock::now();
-    std::ifstream file("puzzles/d2.txt");
-    std::string line;
-    std::regex delim("\\s");
+    ifstream file("puzzles/d2.txt");
+    string line;
     int safe_count{};
     while (getline(file, line)) {
-        std::vector<int> curr_path;
-        std::istringstream iss(line);
+        vector<int> curr_path;
+        istringstream iss(line);
         int num;
         while (iss >> num) {
             curr_path.push_back(num);
@@ -40,7 +35,7 @@ int main() {
 
         bool anyOk = isGood(curr_path); //check without removing
         auto consider = [&](int i) { //anonymous for removing index i and checking
-            std::vector<int> path = curr_path;
+            vector<int> path = curr_path;
             path.erase(path.begin() + i);
             if (isGood(path)) {
                 anyOk = true;
@@ -68,8 +63,8 @@ int main() {
         }
         if (anyOk) safe_count++;
     }
-    std::cout << safe_count <<std::endl;
+    cout << safe_count << endl;
     auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = end - start;
-    std::cout << "Elapsed time: " << elapsed.count() << " seconds\n";
+    duration<double> elapsed = end - start;
+    cout << "Elapsed time: " << elapsed.count() << " seconds\n";
 }
