@@ -19,4 +19,9 @@ int main() {
     a++;
     b++;
     f(4);
+
+    vector<int> hello = {1,2,3};
+    if (hello[-1]) {
+        cout << "nice";
+    }
 }
