@@ -12,6 +12,7 @@
 
 using std::ifstream;
 using std::istringstream;
+using std::stringstream;
 using std::chrono::duration;
 using std::vector;
 using std::unordered_map;
@@ -28,6 +29,7 @@ using std::views::filter;
 using std::accumulate;
 using std::stoi;
 using std::regex_match;
+using std::ranges::find;
 
 
 #endif //AOC_H
