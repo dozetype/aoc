@@ -2,6 +2,10 @@
 
 int main() {
     ifstream file("puzzles/d5.txt");
+    /**  rules:
+     *   56: 61 23 28 29 75 44 32 57 14 98 11 94 69 85 68 53 84 17 27 62 89 81 74 72
+     *   21: 35 14 44 84 24 83 17 99 46 94 48 81 56 82 68 49 73 77 43 85 32 16 95 33
+     */
     unordered_map<int, vector<int>> rules;
     string line;
     bool firstPortion = true;
@@ -20,6 +24,7 @@ int main() {
             rules[num1].push_back(num2);
         }
         else {
+            //update: 29,39,24,43,77,33,82
             vector<int> update;
             int num;
             while (ss >> num) {
@@ -42,4 +47,5 @@ int main() {
         }
     }
     cout << ans1 << "   " << ans2 << endl;
+    DebugLog("hello");
 }
