@@ -25,16 +25,25 @@ int main(){
                 pair<int, int> dist;
                 dist.first = ants[i].first-ants[j].first;
                 dist.second = ants[i].second-ants[j].second;
-                int node1Y = ants[i].first + dist.first;
-                int node1X = ants[i].second + dist.second;
-                int node2Y = ants[j].first - dist.first;
-                int node2X = ants[j].second - dist.second;
-                if(node1Y>=0 && node1Y<map.first && node1X>=0 && node1X<map.second){
+                int mul{1};
+                while(ants[i].first+mul*dist.first>=0 && ants[i].first+mul*dist.first<map.first &&
+                    ants[i].second+mul*dist.second>=0 && ants[i].second+mul*dist.second<map.second){
+                    int node1Y = ants[i].first + mul*dist.first;
+                    int node1X = ants[i].second + mul*dist.second;
                     nodes.insert({node1Y, node1X});
+                    mul++;
                 }
-                if(node2Y>=0 && node2Y<map.first && node2X>=0 && node2X<map.second){
+                mul = 1;
+                while(ants[j].first-mul*dist.first>=0 && ants[j].first-mul*dist.first<map.first &&
+                    ants[j].second-mul*dist.second>=0 && ants[j].second-mul*dist.second<map.second){
+                    int node2Y = ants[j].first - dist.first;
+                    int node2X = ants[j].second - dist.second;
                     nodes.insert({node2Y, node2X});
+                    mul++;
                 }
+                //inserting antenna itself as a node
+                nodes.insert({ants[i].first, ants[i].second});
+                nodes.insert({ants[j].first, ants[j].second});
             }
         }
     }
