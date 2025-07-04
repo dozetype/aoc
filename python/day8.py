@@ -1,5 +1,6 @@
 import time
 start = time.time()
+
 file = open("puzzles/d8.txt", 'r')
 freq = {}
 y = 0
@@ -65,5 +66,6 @@ for key, value in freq.items():
                         ans2 += 1
                     mul+=1
 print("1:", ans1, "\n2:", ans2)
+
 end = time.time()
 print(f"Elapsed time: {end - start:.6f} seconds")

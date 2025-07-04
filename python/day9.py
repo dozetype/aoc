@@ -1,6 +1,9 @@
-file = open("day9/day9.txt", 'r')
+import time
+start = time.time()
+
+file = open("puzzles/d9.txt", 'r')
 for line in file:
-    diskMap = line
+    diskMap = line.strip()
     disk = ""
     free = False
     cnt, ans = 0, 0
@@ -24,3 +27,6 @@ for line in file:
     for i in range(len(disk)): #finding sum
         ans += i * ord(disk[i])
 print(ans) #part 1
+
+end = time.time()
+print(f"Elapsed time: {end - start:.6f} seconds")
