@@ -1,10 +1,7 @@
-#include <climits>
-
 #include "aoc.h"
 
 int main() {
     auto start = Clock::now();
-
     /**
      * READING
      */
