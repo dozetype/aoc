@@ -12,6 +12,9 @@
 #include <unordered_set>
 #include <set>
 #include <chrono>
+#include <utility>
+#include <algorithm>
+#include <climits>
 
 #define DebugLog( msg )  std::cout << __FILE__ << ":" << __LINE__ << ": " << msg
 
@@ -44,6 +47,7 @@ using std::ranges::find;
 using std::make_pair;
 using std::to_string;
 using std::function;
+using std::swap;
 
 
 #endif //AOC_H
