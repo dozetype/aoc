@@ -1,4 +1,7 @@
 from collections import deque
+import time
+start = time.time()
+
 topology = []
 trailHeads = []
 ans1, ans2 = 0, 0
@@ -67,3 +70,6 @@ for heads in trailHeads:
 #####################################################################
 
 print("Part 1:", ans1, "Part 1:", ans2)
+
+end = time.time()
+print(f"Elapsed time: {end - start:.6f} seconds")

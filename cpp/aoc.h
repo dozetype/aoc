@@ -23,6 +23,7 @@ using std::istringstream;
 using std::stringstream;
 using std::chrono::duration;
 using std::vector;
+using std::array;
 using std::unordered_map;
 using std::unordered_set;
 using std::map;
