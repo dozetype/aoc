@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function good(arr){
+function good(arr) {
     let increasing = false;
     let decreasing = false;
     for (let i = 0; i < arr.length - 1; i++) {
@@ -21,9 +21,9 @@ fs.readFile("puzzles/d2.txt", "utf-8", (err, data) => {
         if (line == "") return;
         const arr = line.split(/\s+/);
 
-        for (let i = 0; i < arr.length; i++){
-            const copy = arr.slice(0, i).concat(arr.slice(i+1))
-            if(good(copy)){
+        for (let i = 0; i < arr.length; i++) {
+            const copy = arr.slice(0, i).concat(arr.slice(i + 1));
+            if (good(copy)) {
                 ans2++;
                 break;
             }
