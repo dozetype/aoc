@@ -29,7 +29,7 @@ int main() {
         vector<int> curr_path;
         istringstream iss(line);
         int num;
-        while (iss >> num) {
+        while (iss >> num) { //Automatically remove the \s
             curr_path.push_back(num);
         }
 

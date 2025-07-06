@@ -28,7 +28,7 @@ int main() {
         pair<int, int> me = pos;
         while (true) {
             const int hash = (me.first*map[0].size()+me.second)*4 + d;
-            if (allPos[hash]){ return true;}
+            if (allPos[hash]){ return true;} //if I've been here before with same direction. Means its a loop
             allPos[hash] = true;
             int nextY = me.first + dirs[d][0];
             int nextX = me.second + dirs[d][1];

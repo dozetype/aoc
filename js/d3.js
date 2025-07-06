@@ -7,6 +7,7 @@ fs.readFile("puzzles/d3.txt", "utf-8", (lol, data) => {
     let enabled = true;
     lines.forEach((line) => {
         if (line == "") return;
+        // Getting all mul(int, int), do() and don't()
         const res = line.match(/mul\(\d+,\d+\)|do\(\)|don\'t\(\)/g);
         res.forEach((mul) => {
             if (mul == "do()") {

@@ -24,13 +24,14 @@ fs.readFile("puzzles/d1.txt", "utf8", (err, data) => {
     }
   }
 
+  // Sort ascending order
   arr1.sort((x, y) => x - y);
   arr2.sort((x, y) => x - y);
   let ans = 0;
   let ans2 = 0;
   for (let i = 0; i < arr1.length; i++) {
     ans += Math.abs(arr1[i] - arr2[i]);
-    if (map[arr1[i]]) {
+    if (map[arr1[i]]) { //if left value exist in the right side
       ans2 += arr1[i] * map[arr1[i]];
     }
   }

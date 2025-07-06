@@ -22,6 +22,7 @@ fs.readFile("puzzles/d2.txt", "utf-8", (err, data) => {
         const arr = line.split(/\s+/);
 
         for (let i = 0; i < arr.length; i++) {
+            // Removing 1 index from line
             const copy = arr.slice(0, i).concat(arr.slice(i + 1));
             if (good(copy)) {
                 ans2++;

@@ -17,7 +17,7 @@ fs.readFile("puzzles/d4.txt", "utf-8", (lol, data) => {
     const letters = [];
     const lines = data.split(/\n/);
     lines.forEach((line) => {
-        if (line == "") return;
+        if (line == "") return; //skip empty line
         letters.push(line);
     });
     let ans1 = 0;
@@ -30,13 +30,13 @@ fs.readFile("puzzles/d4.txt", "utf-8", (lol, data) => {
                 dirs.forEach((dir) => {
                     const yMax = i + 3 * dir[0];
                     const xMax = j + 3 * dir[1];
-                    if (
+                    if ( //checking bound
                         yMax >= 0 &&
                         yMax < height &&
                         xMax >= 0 &&
                         xMax < width
                     ) {
-                        if (
+                        if ( //checking MAS
                             letters[i + dir[0]][j + dir[1]] == "M" &&
                             letters[i + 2 * dir[0]][j + 2 * dir[1]] == "A" &&
                             letters[yMax][xMax] == "S"
@@ -47,7 +47,7 @@ fs.readFile("puzzles/d4.txt", "utf-8", (lol, data) => {
                 });
             }
             if (letters[i][j] == "A") {
-                if (
+                if ( //checking bound
                     i - 1 >= 0 &&
                     i + 1 < height &&
                     j - 1 >= 0 &&
@@ -66,7 +66,7 @@ fs.readFile("puzzles/d4.txt", "utf-8", (lol, data) => {
                                 letters[i + dirs[k][0]][
                                     j + dirs[k][1]
                                 ].charCodeAt(0);
-                    }
+                    } //checking MAS
                     if (diagonal1 == MAS && diagonal2 == MAS) ans2++;
                 }
             }
