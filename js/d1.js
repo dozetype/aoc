@@ -14,8 +14,8 @@ fs.readFile("puzzles/d1.txt", "utf8", (err, data) => {
       continue;
     }
     const [a, b] = lines[i].split(/\s+/);
-    arr1.push(Number(a));
-    const bInt = Number(b);
+    arr1.push(+a);
+    const bInt = +b;
     arr2.push(bInt);
     if (map[bInt]) {
       map[bInt]++;
@@ -34,5 +34,5 @@ fs.readFile("puzzles/d1.txt", "utf8", (err, data) => {
       ans2 += arr1[i] * map[arr1[i]];
     }
   }
-  console.log("part1:", ans, "part2:", ans2);
+  console.log("part1:", ans, "part2:", ans2); //part1: 2057374 part2: 23177084
 });
