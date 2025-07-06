@@ -13,7 +13,7 @@ int main() {
             line.begin(),
             line.end(),
             delim,
-            0 // special value: return the parts *between* matches. 0 for the matches
+            0 // special value: -1 return the parts *between* matches. 0 for the matches
         );
         for (; it != end; ++it) {
             all_search.push_back(it->str());
