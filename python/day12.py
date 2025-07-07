@@ -1,4 +1,7 @@
-file = open("day12/day12.txt", 'r')
+import time
+start = time.time()
+
+file = open("puzzles/d12.txt", 'r')
 farm = {}
 ans1 = 0
 
@@ -40,3 +43,6 @@ for key, value in farm.items():
         area, perimeter = findRegion(plant)
         ans1 += area*perimeter
 print("Part 1:", ans1)
+
+end = time.time()
+print(f"Elapsed time: {end - start:.6f} seconds")

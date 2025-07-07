@@ -50,6 +50,7 @@ using std::make_pair;
 using std::to_string;
 using std::function;
 using std::swap;
+using std::ranges::distance;
 
 
 #endif //AOC_H
