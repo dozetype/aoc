@@ -33,11 +33,11 @@ int getSide(vector<array<int, 3>>& edges) {
 array<int, 3> getPerimeter(vector<array<int, 2>>& pType) {
     vector<array<int, 3>> edges;   // holds the pos and direction of edge
     set<array<int, 2>> plantsPos;  // bc we cannot increase perim if it is facing another plant
-    array<int, 3> areaPerim{};
+    array<int, 3> res{}; //area, perimeter, sides
     array<int, 2> startPlant = pType[0];
     auto it = find(pType.begin(), pType.end(), startPlant);
     pType.erase(it);
-    areaPerim[0]++;
+    res[0]++;
     plantsPos.insert(startPlant);
     vector<array<int, 2>> stack = {startPlant};
     while (!stack.empty()) {
@@ -49,17 +49,17 @@ array<int, 3> getPerimeter(vector<array<int, 2>>& pType) {
             if (it != pType.end()) {
                 stack.push_back(nextPlant);
                 pType.erase(it);
-                areaPerim[0]++;
+                res[0]++;
                 plantsPos.insert(nextPlant);
             } else if (plantsPos.find(nextPlant) == plantsPos.end()) {  // facing outside
-                areaPerim[1]++;
+                res[1]++;
                 edges.push_back({currPlant[0], currPlant[1], i});
             }
         }
     }
 
-    areaPerim[2] = getSide(edges);
-    return areaPerim;
+    res[2] = getSide(edges);
+    return res;
 }
 
 int main() {
