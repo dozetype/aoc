@@ -15,6 +15,7 @@
 #include <utility>
 #include <algorithm>
 #include <climits>
+#include <cstdint>
 
 #define DebugLog( msg )  std::cout << __FILE__ << ":" << __LINE__ << ": " << msg
 
