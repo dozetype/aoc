@@ -18,7 +18,7 @@ int getSide(vector<array<int, 3>>& edges) {
                 j = (currEdge[2] + 1 + (i * 2)) % 4;  // reduce loop count by half
                 array<int, 3> nextEdge = {currEdge[0] + dirs[j][0], currEdge[1] + dirs[j][1],
                                           currEdge[2]};
-                auto it = find(edges.begin(), edges.end(), nextEdge);
+                it = find(edges.begin(), edges.end(), nextEdge);
                 if (it != edges.end()) {
                     stack.push_back(nextEdge);
                     edges.erase(it);
@@ -45,7 +45,7 @@ array<int, 3> getPerimeter(vector<array<int, 2>>& pType) {
         stack.pop_back();
         for (int i = 0; i < 4; i++) {
             array<int, 2> nextPlant = {currPlant[0] + dirs[i][0], currPlant[1] + dirs[i][1]};
-            auto it = find(pType.begin(), pType.end(), nextPlant);
+            it = find(pType.begin(), pType.end(), nextPlant);
             if (it != pType.end()) {
                 stack.push_back(nextPlant);
                 pType.erase(it);
