@@ -1,4 +1,7 @@
-file = open("day14\day14.txt", 'r')
+import time
+start = time.time()
+
+file = open("puzzles/d14.txt", 'r')
 q1, q2, q3, q4, ans2 = 0,0,0,0,0
 halfW, halfH = 101//2, 103//2
 Positions, Velocities = [], []
@@ -46,3 +49,6 @@ while(not christmasTree):
                 print()
 
 print("Part 1:", q1*q2*q3*q4, "\nPart 2:", seconds)
+
+end = time.time()
+print(f"Elapsed time: {end - start:.6f} seconds")
