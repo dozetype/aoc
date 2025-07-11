@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <climits>
 #include <cstdint>
+#include <queue>
 
 #define DebugLog( msg )  std::cout << __FILE__ << ":" << __LINE__ << ": " << msg
 
@@ -35,6 +36,7 @@ using std::smatch;
 using std::pair;
 using std::set;
 using std::bitset;
+using std::queue;
 
 using Clock = std::chrono::high_resolution_clock;
 using std::cout;
