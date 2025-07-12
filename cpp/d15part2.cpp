@@ -55,6 +55,7 @@ int main(){
 
         }
         else{
+            //what i need to do is to first check if ive found [ or ] then push it in, then push the other one in too. then move forward by 1, then push other one in as well
             while(ss >> c){
                 // cout << c << endl;
                 array<int, 2> nextPos {pos[0]+dir[c][0], pos[1]+dir[c][1]};
@@ -65,12 +66,39 @@ int main(){
                 }
                 else if(nextPosItem == '[' || nextPosItem == ']'){
                     queue<array<int, 2>> q; //queue to hold pos to check
+                    set<array<int, 2>> qSet;
                     q.push(nextPos);
-                    if(nextPosItem == '[') q.push({nextPos[0], nextPos[1]+1});
-                    else q.push({nextPos[0], nextPos[1]-1});
+                    qSet.insert(nextPos);
+                    if(nextPosItem == '[') {q.push({nextPos[0], nextPos[1]+1}); qSet.insert({nextPos[0], nextPos[1]+1});}
+                    else {q.push({nextPos[0], nextPos[1]-1}); qSet.insert({nextPos[0], nextPos[1]+1});}
                     bool movable{true};
-                    while(!stack.empty()){
-                        if() 
+                    while(!q.empty()){
+                        array<int, 2> currPos = q.front();
+                        q.pop();
+                        currPos[0]+=dir[c][0];
+                        currPos[1]+=dir[c][1];
+                        nextPosItem = map[currPos[0]][currPos[1]];
+                        if(nextPosItem == '.') continue;
+                        else if(nextPosItem == '[' || nextPosItem == ']'){
+                            q.push(currPos);
+                            qSet.insert(currPos);
+                            if(nextPosItem == '['){
+                                if(!qSet.contains({currPos[0], currPos[1]+1})){
+                                    q.push({currPos[0], currPos[1]+1});
+                                    qSet.insert({currPos[0], currPos[1]+1});
+                                }
+                            }
+                            else {
+                                if(!qSet.contains({currPos[0], currPos[1]-1})){
+                                    q.push({currPos[0], currPos[1]-1});
+                                    qSet.insert({currPos[0], currPos[1]-1});
+                                }
+                            }
+                        }
+                        else{
+                            movable = false;
+                            break;
+                        }
                     }
                 }
             }
