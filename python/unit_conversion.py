@@ -2,14 +2,14 @@
 # example 1m -> m = 100cm, 1m -> deg = none
 
 # Graph type approach
-class node:
+class Node:
     def __init__(self, unit) -> None: 
         # unit will hold nodes unit, edges are for possible conversions
         self.unit = unit
         self.edges = {}
     
     def add_edges(self, possible_unit, operator, operand):
-        self.edges[possible_unit] = edge(possible_unit, operator, operand)
+        self.edges[possible_unit] = Edge(possible_unit, operator, operand)
         
     def convert(self, number, to_unit):
         # BFS for indirect conversions
@@ -32,7 +32,7 @@ class node:
                     q.append((new_num, unit))
         return None
         
-class edge:
+class Edge:
     def __init__(self, unit, operator, operand) -> None:
         self.unit = unit
         self.operator = operator
@@ -44,7 +44,7 @@ nodes = {}
 for conv in conversions:
     from_unit, to_unit, operator, operand = conv
     if not nodes.get(from_unit):
-        nodes[from_unit] = node(from_unit)
+        nodes[from_unit] = Node(from_unit)
     if not nodes[from_unit].edges.get(to_unit):
         nodes[from_unit].add_edges(to_unit, operator, operand)
 
