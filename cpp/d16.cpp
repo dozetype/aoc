@@ -8,13 +8,17 @@ struct Node{
     Node(bool isWall = false):wall(isWall){};
 };
 
+int lol(vector<vector<Node>>& maze, array<int, 2> currPos, int dir);
+
 int main(){
     ifstream file("puzzles/d16.txt");
     string line;
     vector<vector<Node>> maze;
-    pair<int, int> startPos;
-    pair<int, int> endPos;
+    array<int, 2> startPos;
+    int currDir = 3;
+    array<int, 2> endPos;
     int x{}, y{};
+    array<array<int, 2>, 4> dirs = {{{-1,0}, {0,-1}, {1,0}, {0,1}}};
     while(getline(file, line)){
         x = 0;
         stringstream ss(line);
@@ -29,10 +33,9 @@ int main(){
         maze.push_back(currLine);
         ++y;
     }
-    for(auto i: maze){
-        for(auto x: i){
-            cout << x.wall;
-        }
-        cout << "\n";
-    }
+    array<int, 2> currPos = startPos;
+}
+
+int lol(vector<vector<Node>>& maze, array<int, 2> currPos, int dir){
+    if(maze[currPos[0]][currPos[1]].wall) return ;
 }
